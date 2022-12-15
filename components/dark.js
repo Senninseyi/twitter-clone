@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import { useTheme } from "next-themes";
+import React, { useState, useEffect } from "react";
 
 export const DarkMode = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) {
+    return null;
+  }
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    setDarkMode(theme === "light" ? "dark" : "light");
   };
 
   return (
     <>
-      <button onClick={() => toggleDarkMode()}>toggle</button>
+      <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+        toggle {theme === "light" ? "dark" : "light"}
+      </button>
     </>
   );
 };
