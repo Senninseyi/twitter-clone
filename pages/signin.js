@@ -9,7 +9,7 @@ const SignIn = () => {
   return (
     <>
       <Layout isAuth={true}>
-        <div className="w-full h-full min-h-screen">
+        <div className="w-full h-full min-h-screen bg-white dark:bg-black">
           <div className="grid grid-cols-8 lg:grid-cols-10">
             {/* navigation */}
             <div className="col-span-1 lg:col-span-3 h-full border-r-2
