@@ -6,10 +6,10 @@ import "../styles/globals.css";
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <ThemeProvider attribute="class" enableSystem={true}>
-        <div className="absolute bottom-14 z-10 right-4">
+      <ThemeProvider attribute="class" enableSystem={false}>
+        {/* <div className="absolute bottom-1/2 z-10 right-4">
           <DarkMode />
-        </div>
+        </div> */}
         <Layout>
           <Component {...pageProps} />
         </Layout>
