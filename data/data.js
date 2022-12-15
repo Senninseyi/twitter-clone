@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react";
+import { client } from "../lib/supabase";
 
 export const Links = [
   {
@@ -18,6 +19,12 @@ export const authLinks = [
     link: "",
     icon: <Icon icon="flat-color-icons:google" />,
     label: "Sign up with Google",
+    onclick: async () => {
+      const { data, error } = await client.auth.signInWithOAuth({
+        provider: "google",
+      });
+      console.log(data, error);
+    },
   },
   {
     link: "",
