@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { hideModal, showModal } from "../../redux/slices/modalSlice";
+import { Modals } from "../modal/modal.js";
 
 const Nav = () => {
+  const modal = useSelector((state) => state.mod.modal);
+  const dispatch = useDispatch();
+  console.log(modal);
+
+  const show = () => {
+    if (modal === false) {
+      dispatch(showModal(modal));
+    } else {
+      dispatch(hideModal(modal));
+    }
+    console.log(modal);
+  };
+
   return (
     <nav
       className="absolute bottom-0 bg-primary w-full
@@ -19,13 +35,21 @@ const Nav = () => {
             </div>
             <div className="col-span-1 w-full flex items-center">
               <div className="flex gap-4 items-center w-full">
-                <button className="font-bold border-[1px] rounded-2xl px-4 py-1.5 text-white">Log in</button>
-                <button className="font-bold rounded-2xl bg-white text-black px-4 py-1.5">Sign up</button>
+                <button
+                  onClick={() => show()}
+                  className="font-bold border-[1px] rounded-2xl px-4 py-1.5 text-white"
+                >
+                  Log in
+                </button>
+                <button className="font-bold rounded-2xl bg-white text-black px-4 py-1.5">
+                  Sign up
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <>{modal && <Modals title="Log in" show={modal} />}</>
     </nav>
   );
 };
