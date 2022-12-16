@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import Layout from "../components/layout/layout";
-import { Logo } from "../components/logo/logo";
+import { SideNav } from "../components/navigation/sideNav";
 import Searchbar from "../components/searchbar/searchbar";
-import { authLinks, Links } from "../data/data";
+import { authLinks } from "../data/data";
 
 const SignIn = () => {
   return (
@@ -11,27 +11,7 @@ const SignIn = () => {
       <Layout isAuth={true}>
         <div className="w-full h-full min-h-screen bg-white dark:bg-black">
           <div className="grid grid-cols-8 lg:grid-cols-10">
-            {/* navigation */}
-            <div className="col-span-1 lg:col-span-3 h-full border-r-2
-             dark:border-gray-700 min-h-screen flex justify-center items-start">
-              <div className="w-fit lg:w-2/3 px-6 py-3">
-                <Logo />
-                <div className="flex flex-col mt-4 gap-4">
-                  {Links.map((l, index) => (
-                    <Link
-                      href={l.link}
-                      key={index}
-                      className="flex items-center font-medium text-lg text-black dark:text-white
-                       px-3 py-2 gap-2 rounded-3xl hover:bg-gray-300 w-fit dark:hover:bg-primary"
-                    >
-                      <span>{l.icon}</span>
-                      <p className="hidden lg:flex">{l.label}</p>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-            {/* navigation */}
+            <SideNav />
 
             {/* content */}
             <div className="col-span-7 lg:col-span-4 flex justify-center items-start">
@@ -55,6 +35,7 @@ const SignIn = () => {
                         key={index}
                         className="rounded-3xl bg-white text-black font-medium 
                         flex justify-center items-center gap-4 py-2 px-4 border-2"
+                        onClick={i.onclick}
                       >
                         {i.icon}
                         {i.label}
